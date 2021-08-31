@@ -1,0 +1,17 @@
+Seleção:11
+Valor do Item:10
+Valor do Desconto:0
+Valor do Pagamento:10
+ID do Cartão ID:2edfd4fa-8b58-4f67-b377-f927d01ee73a
+Matricula:20202020
+Produto:COLA CASCOLA 2,8 KG
+Autorizadora:2
+codigoDeSeguraca:123
+cartao: {
+    id: 2edfd4fa-8b58-4f67-b377-f927d01ee73a,
+    autorizadora: 2
+    codigoDeSeguraca: 123
+}
+
+this.state.cartao
+this.state.codigoDeSeguraca
