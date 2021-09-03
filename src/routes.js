@@ -1,18 +1,18 @@
 import React, { Component } from 'react';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { createAppContainer, createSwitchNavigator, createBottomTabNavigator, createStackNavigator } from 'react-navigation';
-//import Main from  './pages/Main';
 import SignIn from './pages/SignIn';
 import SignUp from './pages/SignUp';
 import Senha from './pages/Senha';
-import Maquina from './pages/Comprar/Maquina';
-import Bluetooth from './pages/Comprar/Bluetooth';
-import Buy from './pages/Buy';
+import Inicial from './pages/Dashboard/Inicial';
+import Apontamento from './pages/Dashboard/Apontamento';
+import ApontamentoItem from './pages/Dashboard/ApontamentoItem';
+import Apontamentos from './pages/Dashboard/Apontamentos';
+import CriarApontamento from './pages/Dashboard/CriarApontamento';
 import Cadastrar from './pages/Cartoes/Cadastrar';
 import Listagem from './pages/Cartoes/Listagem';
 import Voucher from './pages/Cartoes/Voucher';
 import Perfil from './pages/Perfil';
-import Compras from './pages/Comprar/Compras';
 
 export default (isSigned = false) => createAppContainer(
     createSwitchNavigator({
@@ -22,12 +22,13 @@ export default (isSigned = false) => createAppContainer(
             Senha
         }),
         App:createBottomTabNavigator({
-            Comprar: {
+            Dashboard: {
                 screen:createSwitchNavigator({
-                    Maquina,
-                    Bluetooth,                    
-                    Buy,
-                    Compras,
+                    Inicial,
+                    CriarApontamento,
+                    Apontamento,
+                    ApontamentoItem,
+                    Apontamentos,
                 },{
                     headerLayoutPreset:'center',
                     defaultNavigationOptions:{

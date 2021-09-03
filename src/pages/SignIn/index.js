@@ -1,15 +1,14 @@
-import React, { useEffect,useRef,useState } from 'react';
+import React, { useEffect,useState } from 'react';
 import { Image,Keyboard,ScrollView,Linking } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import Background from '../../components/Background';
 import { signInRequest,signInRefresh } from '../../store/modules/auth/actions';
-import logo from '../../assets/img/logo-pilao.png';
+import logo from '../../assets/img/logo-sl-cafes.png';
 import { Container, Form, FormInput, SubmitButton,SignLink,SignLinkText } from './styles';
 
 export default function SignIn({ navigation }) {
   const dispatch = useDispatch();
-  const passwordRef = useRef();
-
+  const [filial,setFilial] = useState('');
   const [email,setEmail] = useState('');
   const [password,setPassword] = useState('');
   const user = useSelector(state => state.user.profile);
@@ -29,7 +28,7 @@ export default function SignIn({ navigation }) {
   },[]);
 
   function handleSubmit(){
-    dispatch(signInRequest(email,password));
+    dispatch(signInRequest(email,password,filial));
   }
   
   return (
@@ -39,15 +38,22 @@ export default function SignIn({ navigation }) {
         <Form>
           <ScrollView>
             <FormInput 
-              icon="mail-outline"
+              icon="business"
+              keyboardType="numeric"
+              keyboardCorrect={false}
+              autoCapitalize="none"
+              placeholder="Digite sua filial"
+              value={filial}
+              onChangeText={setFilial}
+            />
+            <FormInput 
+              icon="perm-identity"
               keyboardType="email-address"
               keyboardCorrect={false}
               autoCapitalize="none"
               autoCompleteType="email"
               textContentType="emailAddress"
-              placeholder="Digite seu e-mail"
-              returnKeyType="next"
-              onSubmitEditing={()=> passwordRef.current.focus()}
+              placeholder="Digite seu usuario"
               value={email}
               onChangeText={setEmail}
             />
@@ -55,8 +61,7 @@ export default function SignIn({ navigation }) {
             <FormInput 
               icon="lock-outline"
               secureTextEntry
-              placeholder="Sua Senha"
-              ref={passwordRef}
+              placeholder="Digite sua Senha"
               returnKeyType="send"
               onSubmitEditing={handleSubmit}
               value={password}
@@ -66,15 +71,9 @@ export default function SignIn({ navigation }) {
             <SubmitButton loading={loading} onPress={handleSubmit}>
               Acessar
             </SubmitButton>
-            <SignLink onPress={()=> navigation.navigate('SignUp')}>
-              <SignLinkText>Criar uma conta</SignLinkText>
-            </SignLink>
-            <SignLink onPress={()=> navigation.navigate('Senha')}>
+            {/* <SignLink onPress={()=> navigation.navigate('Senha')}>
               <SignLinkText>Esqueci Minha Senha</SignLinkText>
-            </SignLink>
-            <SignLink onPress={()=> Linking.openURL('https://slpay.slcafes.com.br:8098/politica/')}>
-              <SignLinkText>Politica de Privacidade</SignLinkText>
-            </SignLink>
+            </SignLink> */}
           </ScrollView>
         </Form>
       </Container>

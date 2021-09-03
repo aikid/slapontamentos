@@ -9,7 +9,7 @@ export const Container = styled(RectButton)`
 `;
 
 export const Text = styled.Text`
-    color:#d41132;
+    color:#666;
     font-weight:bold;
     font-size:16px;
 `;

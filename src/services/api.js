@@ -1,7 +1,7 @@
 import axios from  'axios';
 
 const api = axios.create({
-    baseURL: 'https://slpay.slcafes.com.br:8098/api',
+    baseURL: 'https://telemetria.slcafes.com.br:8095',
 });
 
 export default api;

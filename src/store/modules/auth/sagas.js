@@ -4,24 +4,32 @@ import api from '../../../services/api';
 import { signInSuccess, signFailure,signUpSuccess } from './actions';
 
 export function* signIn({ payload }) {
+  console.log('Payload: ',payload);
   try {
-    const { email, password } = payload;
-    const response = yield call(api.post, '/Auth/entrar', {
-      email,
-      password,
-    });
+    const { email, password, filial } = payload;
+    
+    const params = new URLSearchParams();
+    params.append('grant_type', 'password');
+    params.append('username', email);
+    params.append('password', password);
+    params.append('filial', filial);
+    const response = yield call(api.post, '/Token', params);
 
     console.log(response.data);
 
-    const token = response.data.data.accessToken;
+    const token = response.data.access_token;
 
     api.defaults.headers.Authorization = `Bearer ${token}`;
 
-    const perfil = yield call(api.get, '/Auth');
-    const user = perfil.data.data;
-    user.password = password;
-    user.datelog = new Date();
-    if (!user) {
+    const user = {
+      name: response.data.userName,
+      empresaId: response.data.empresaId,
+      filial: response.data.filial,
+      password: password,
+      datelog: new Date()
+    };
+
+    if (!user.name) {
       Alert.alert(
         'Erro no login',
         'O usuário logado não é um usuário valido!'
@@ -31,7 +39,7 @@ export function* signIn({ payload }) {
 
     yield put(signInSuccess(token, user));
 
-    // history.push('/dashboard');
+    //history.push('/dashboard');
   } catch (err) {
     Alert.alert(
       'Falha na autenticação',
@@ -43,10 +51,12 @@ export function* signIn({ payload }) {
 
 export function* refreshlogin({ payload }) {
   try {
-    const { email, password } = payload;
-    const response = yield call(api.post, '/Auth/entrar', {
-      email,
-      password,
+    const { email, password, filial } = payload;
+    const response = yield call(api.post, '/Token', {
+      grant_type: 'password',
+      username: email,
+      password: password,
+      filial: filial
     });
 
     console.log(response.data);
@@ -55,11 +65,15 @@ export function* refreshlogin({ payload }) {
 
     api.defaults.headers.Authorization = `Bearer ${token}`;
 
-    const perfil = yield call(api.get, '/Auth');
-    const user = perfil.data.data;
-    user.password = password;
-    user.datelog = new Date();
-    if (!user) {
+    const user = {
+      name: response.data.data.userName,
+      empresaId: response.data.data.empresaId,
+      filial: response.data.data.filial,
+      password: password,
+      datelog: new Date()
+    };
+
+    if (!user.name) {
       Alert.alert(
         'Erro no login',
         'O usuário logado não é um usuário valido!'

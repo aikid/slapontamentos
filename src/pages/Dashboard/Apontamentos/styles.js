@@ -13,14 +13,6 @@ export const Container = styled.KeyboardAvoidingView.attrs({
   padding: 0 30px;
 `;
 
-export const Title = styled.Text`
-    font-size: 20px;
-    color: #fff;
-    font-weight: bold;
-    margin-top: 30px;
-    margin-bottom: 30px;
-`;
-
 export const Form = styled.View`
     align-self: stretch;
     margin-top:50px;
@@ -34,13 +26,16 @@ export const SubmitButton = styled(Button)`
     margin-top:5px;
 `;
 
-export const SignLink = styled.TouchableOpacity`
-    margin-top:20px;
+export const Title = styled.Text`
+    font-size: 20px;
+    color: #fff;
+    font-weight: bold;
+    align-self: center
+    margin-top: 30px;
+    margin-bottom: 30px;
 `;
 
-export const SignLinkText = styled.Text`
-    color:#fff;
-    font-weight: bold;
-    font-size: 16px;
-    text-align:center;
-`;
+export const List = styled.FlatList.attrs({
+    showsVerticalScrollIndicator: false,
+    contentContainerStyle:{ padding: 0 }
+})``;

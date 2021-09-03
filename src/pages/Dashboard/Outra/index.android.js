@@ -5,11 +5,11 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import Background from '../../../components/Background';
 import Produtos from '../../../components/Produtos';
 import { RNCamera } from 'react-native-camera';
-import logo from '../../../assets/img/logo-pilao.png';
+import logo from '../../../assets/img/logo-sl-cafes.png';
 import { Container, Intro, Form, SubmitButton,ModalView,OpenButton,CenteredView,ModalTitle,ButtonTitle,GroupLinks,List,FormModal } from './styles';
 import api from '../../../services/api';
 
-class Maquina extends Component{
+class Inicial extends Component{
 
   constructor() {
     super();
