@@ -19,8 +19,8 @@ export const Left = styled.View`
 `;
 
 export const Bandeira = styled.Image`
-    width: 50px;
-    height: 50px;
+    width: 35px;
+    height: 35px;
     border-radius: 25px;
 `;
 
@@ -31,7 +31,7 @@ export const Info = styled.View`
 
 export const Nome = styled.Text`
     font-weight: bold;
-    font-size: 14px;
+    font-size: 10px;
     color: #333;
 `;
 

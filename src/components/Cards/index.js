@@ -54,20 +54,43 @@ export default function Cards({ data, onCancel, onNavigate }) {
         }
         return bandeira;
     }
+
+    function getTipo(type){
+        console.log(type);
+        let tipo = '';
+        switch(type){
+            case 1:
+                tipo = 'Maquina';
+            break;
+            case 2:
+                tipo = 'Depósito';
+            break;
+            case 3:
+                tipo = 'Expedição';
+            break;
+            case 4:
+                tipo = 'Recebimento';
+            break;
+            case 5:
+                tipo = 'Outros';
+            break;
+        }
+        return tipo;
+    }
   return (
     <Container onPress={onNavigate}>
         <Left>
             <Bandeira source={getBandeira(data.autorizadora)}></Bandeira>
             <Info>
-                <Nome>{data.tipo}</Nome>
+                <Nome>{getTipo(data.tipo)}</Nome>
                 <Numero>Criado por: {data.login}</Numero>
                 <Expires>Data do registro: {data.data}</Expires>
             </Info>
         </Left>
 
-        <TouchableOpacity onPress={onCancel}>
+        {/* <TouchableOpacity onPress={onCancel}>
             <Icon name="delete" size={20} color="#f64c75"/>
-        </TouchableOpacity>
+        </TouchableOpacity> */}
     </Container>
   );
 }

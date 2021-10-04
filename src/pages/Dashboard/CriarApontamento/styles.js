@@ -2,6 +2,8 @@ import { Platform } from 'react-native';
 import styled from 'styled-components/native';
 import Input from '../../../components/Input';
 import Button from '../../../components/Button';
+import Icon from 'react-native-vector-icons/MaterialIcons'; 
+
 
 export const Container = styled.KeyboardAvoidingView.attrs({
     enabled: Platform.OS == 'ios',
@@ -44,4 +46,11 @@ export const Intro = styled.Text`
     text-align: center;
     margin-top: 30px; 
     margin-bottom: 30px;
+`;
+
+export const IconTouch = styled(Icon)`
+    color: rgba(255,255,255,0.6);
+    position: absolute;
+    bottom: 125px;
+    right: 10px;
 `;

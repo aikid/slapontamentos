@@ -11,9 +11,12 @@ export default function Produtos({ data, onCancel }) {
         <Left>
             <Bandeira source={prodIcon}></Bandeira>
             <Info>
-                <Nome>Nome: {data.nome}</Nome>
-                <Numero>Preço: R${data.preco}</Numero>
-                <Expires>Código: {data.codigo}</Expires>
+                <Nome>Nome: {data.nomeProduto}</Nome>
+                <Numero>Codigo: {data.codigoProduto}</Numero>
+                <Expires>Quantidade: {data.quantidade}</Expires>
+                {data.numeroSelecao &&
+                  <Expires>Selecao: {data.numeroSelecao}</Expires>
+                }
             </Info>
         </Left>
     </Container>

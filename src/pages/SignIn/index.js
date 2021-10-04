@@ -20,7 +20,7 @@ export default function SignIn({ navigation }) {
       const horagora = new Date();
       if(horagora.getTime() - hora.getTime() > 3600000){
         if(user.password !== null && user.password !== undefined){
-          dispatch(signInRefresh(user.email,user.password));
+          dispatch(signInRefresh(user.name,user.password,user.filial));
         }
       }
     }

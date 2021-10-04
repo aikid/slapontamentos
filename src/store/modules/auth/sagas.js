@@ -50,29 +50,31 @@ export function* signIn({ payload }) {
 }
 
 export function* refreshlogin({ payload }) {
+  console.log('Payload: ',payload);
   try {
     const { email, password, filial } = payload;
-    const response = yield call(api.post, '/Token', {
-      grant_type: 'password',
-      username: email,
-      password: password,
-      filial: filial
-    });
+    
+    const params = new URLSearchParams();
+    params.append('grant_type', 'password');
+    params.append('username', email);
+    params.append('password', password);
+    params.append('filial', filial);
+    const response = yield call(api.post, '/Token', params);
 
     console.log(response.data);
 
-    const token = response.data.data.accessToken;
+    const token = response.data.access_token;
 
     api.defaults.headers.Authorization = `Bearer ${token}`;
 
     const user = {
-      name: response.data.data.userName,
-      empresaId: response.data.data.empresaId,
-      filial: response.data.data.filial,
+      name: response.data.userName,
+      empresaId: response.data.empresaId,
+      filial: response.data.filial,
       password: password,
       datelog: new Date()
     };
-
+    
     if (!user.name) {
       Alert.alert(
         'Erro no login',
