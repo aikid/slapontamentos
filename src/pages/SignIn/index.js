@@ -3,7 +3,7 @@ import { Image,Keyboard,ScrollView,Linking } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import Background from '../../components/Background';
 import { signInRequest,signInRefresh } from '../../store/modules/auth/actions';
-import logo from '../../assets/img/logo-sl-cafes.png';
+import logo from '../../assets/img/logo-2btech.png';
 import { Container, Form, FormInput, SubmitButton,SignLink,SignLinkText } from './styles';
 
 export default function SignIn({ navigation }) {

@@ -3,7 +3,7 @@ import { Image,ScrollView } from 'react-native';
 import { useDispatch,useSelector } from 'react-redux';
 import { signOut } from '../../../store/modules/auth/actions';
 import Background from '../../../components/Background';
-import logo from '../../../assets/img/logo-sl-cafes.png';
+import logo from '../../../assets/img/logo-2btech.png';
 import useLocation from '../../../hooks/useLocation';
 import { Container, ButtonContent, SubmitButton, Intro } from './styles';
 
@@ -36,8 +36,11 @@ export default function Inicial({ navigation }) {
         <Image source={logo}/>
         <ButtonContent>
           <ScrollView>
-            <Intro>Olá {user.name} seja bem vindo, para adicionar um inventário cliente em adicionar apontamento.</Intro>
-            <SubmitButton onPress={()=>navigation.navigate("CriarApontamento")}>
+            <Intro>Olá {user.name} seja bem vindo, para adicionar um inventário clique em adicionar apontamento.</Intro>
+            <SubmitButton onPress={()=>navigation.navigate("EscanearApontamento",{coords: coords})}>
+              Escanear Apontamento
+            </SubmitButton>
+            <SubmitButton onPress={()=>navigation.navigate("CriarApontamento",{coords: coords})}>
               Adicionar Apontamento
             </SubmitButton>
             <SubmitButton onPress={()=>navigation.navigate("Apontamentos")}>

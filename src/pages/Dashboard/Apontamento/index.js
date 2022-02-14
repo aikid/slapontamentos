@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { Image,ScrollView,Text } from 'react-native';
 import Background from '../../../components/Background';
-import logo from '../../../assets/img/logo-sl-cafes.png';
+import logo from '../../../assets/img/logo-2btech.png';
 import api from '../../../services/api';
 import Produtos from '../../../components/Produtos';
 import { Container, Form, SubmitButton,Intro, List,Title } from './styles';
@@ -28,7 +28,7 @@ export default function Apontamento({ navigation }) {
       case 4:
           tipo = 'Recebimento';
       break;
-      case 5:
+      case 10:
           tipo = 'Outros';
       break;
     }
@@ -64,7 +64,7 @@ export default function Apontamento({ navigation }) {
         <Form>
           <ScrollView>
             <Text>Tipo: {getTipo(apontamentoData.tipo)}</Text>
-            <Text>Data do Inventário: {apontamentoData.data}</Text>
+            <Text>Data: {apontamentoData.data}</Text>
             <Title>Itens Cadastrados</Title>
             <ScrollView style={{height: 300}}>
               <List

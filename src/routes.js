@@ -9,9 +9,7 @@ import Apontamento from './pages/Dashboard/Apontamento';
 import ApontamentoItem from './pages/Dashboard/ApontamentoItem';
 import Apontamentos from './pages/Dashboard/Apontamentos';
 import CriarApontamento from './pages/Dashboard/CriarApontamento';
-import Cadastrar from './pages/Cartoes/Cadastrar';
-import Listagem from './pages/Cartoes/Listagem';
-import Voucher from './pages/Cartoes/Voucher';
+import EscanearApontamento from './pages/Dashboard/EscanearApontamento';
 import Perfil from './pages/Perfil';
 
 export default (isSigned = false) => createAppContainer(
@@ -26,6 +24,7 @@ export default (isSigned = false) => createAppContainer(
                 screen:createSwitchNavigator({
                     Inicial,
                     CriarApontamento,
+                    EscanearApontamento,
                     Apontamento,
                     ApontamentoItem,
                     Apontamentos,
@@ -48,27 +47,6 @@ export default (isSigned = false) => createAppContainer(
                 },
             },
             Perfil,
-            Cartoes:createBottomTabNavigator({
-                    Listagem,
-                    Cadastrar,
-                    Voucher
-                },{
-                   navigationOptions:{
-                        tabBarVisible: false,
-                        tabBarLabel: 'Cartões',
-                        tabBarIcon:(
-                        <Icon name="credit-card" size={20} color="rgba(255,255,255,0.6)"/>
-                        ),
-                    },
-                    tabBarOptions: {
-                        keyboardHidesTabBar: true,
-                        activeTintColor: '#fff',
-                        inactiveTintColor: 'rgba(255,255,255,0.6)',
-                        style: {
-                            backgroundColor: '#d41132',
-                        }
-                    }
-            }),
         }, {
             resetOnBlur:true,
             tabBarOptions: {

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Alert,Image,Keyboard,ScrollView } from 'react-native';
 import Background from '../../components/Background';
-import logo from '../../assets/img/logo-pilao.png';
+import logo from '../../assets/img/logo-2btech.png';
 import { Container, Form, FormInput, SubmitButton,SignLink,SignLinkText } from './styles';
 import api from '../../services/api';
 

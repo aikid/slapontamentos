@@ -5,49 +5,22 @@ import { Container, Left, Bandeira, Info, Nome, Numero, Expires } from './styles
 
 export default function Cards({ data, onCancel, onNavigate }) {
     let bandeira = '';
-    function getBandeira(autorizadora){
-        switch(autorizadora){
+    function getBandeira(type){
+        switch(type){
             case 1:
-            bandeira = require('../../assets/img/cartao-visa.png');
+            bandeira = require('../../assets/img/vending-machine.png');
             break;
             case 2:
-            bandeira = require('../../assets/img/cartao-mastercard.png');
+            bandeira = require('../../assets/img/deposit.png');
             break;
             case 3:
-            bandeira = require('../../assets/img/cartao-american-express.png');
+            bandeira = require('../../assets/img/expedition.png');
             break;
-            case 5:
-            bandeira = require('../../assets/img/cartao-hipercard.png');
+            case 4:
+            bandeira = require('../../assets/img/received.png');
             break;
-            case 6:
-            bandeira = require('../../assets/img/cartao-aura.png');
-            break;
-            case 12:
-            bandeira = require('../../assets/img/cartao-cabal.png');
-            break;
-            case 33:
-            bandeira = require('../../assets/img/cartao-diners.png');
-            break;
-            case 41:
-            bandeira = require('../../assets/img/cartao-elo.png');
-            break;
-            case 207:
-            bandeira = require('../../assets/img/cartao-vr-alimentacao.png');
-            break;
-            case 209:
-            bandeira = require('../../assets/img/cartao-vr-refeicao.png');
-            break;
-            case 224:
-            bandeira = require('../../assets/img/cartao-alelo.png');
-            break;
-            case 225:
-            bandeira = require('../../assets/img/cartao-alelo.png');
-            break;
-            case 280:
-            bandeira = require('../../assets/img/cartao-sodexo-alimentacao.png');
-            break;
-            case 281:
-            bandeira = require('../../assets/img/cartao-sodexo-refeicao.png');
+            case 10:
+            bandeira = require('../../assets/img/other.png');
             break;
             default:
             bandeira = require('../../assets/img/cartao-default.png');
@@ -71,7 +44,7 @@ export default function Cards({ data, onCancel, onNavigate }) {
             case 4:
                 tipo = 'Recebimento';
             break;
-            case 5:
+            case 10:
                 tipo = 'Outros';
             break;
         }
@@ -80,7 +53,7 @@ export default function Cards({ data, onCancel, onNavigate }) {
   return (
     <Container onPress={onNavigate}>
         <Left>
-            <Bandeira source={getBandeira(data.autorizadora)}></Bandeira>
+            <Bandeira source={getBandeira(data.tipo)}></Bandeira>
             <Info>
                 <Nome>{getTipo(data.tipo)}</Nome>
                 <Numero>Criado por: {data.login}</Numero>

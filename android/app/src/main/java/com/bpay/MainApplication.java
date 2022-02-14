@@ -1,4 +1,4 @@
-package com.sltelemetria;
+package com.tobeapp;
 
 import android.app.Application;
 import android.content.Context;

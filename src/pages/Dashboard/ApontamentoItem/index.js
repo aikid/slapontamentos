@@ -2,7 +2,7 @@ import React, { useState,useEffect,useRef } from 'react';
 import { useSelector } from 'react-redux';
 import { Image,ScrollView,Alert } from 'react-native';
 import Background from '../../../components/Background';
-import logo from '../../../assets/img/logo-sl-cafes.png';
+import logo from '../../../assets/img/logo-2btech.png';
 import { AutocompleteDropdown } from 'react-native-autocomplete-dropdown';
 import { RNCamera } from 'react-native-camera';
 import api from '../../../services/api';
@@ -31,9 +31,6 @@ export default function Apontamento({ navigation }) {
         break;
         case 4:
           getProduto('REC001');
-        break;
-        case 5:
-          getProduto('OUT001');
         break;
       }
    },[])
@@ -155,28 +152,32 @@ export default function Apontamento({ navigation }) {
         }
 
         {activeCamera &&
-
-          <RNCamera
-                ref={camera => { cameraRef }}
-                captureAudio={false}
-                style={{flex: 1,justifyContent: 'flex-end',alignItems: 'center', width: 10}}
-                type={RNCamera.Constants.Type.back}
-                autoFocus={RNCamera.Constants.AutoFocus.on}
-                flashMode={RNCamera.Constants.FlashMode.off}
-                androidCameraPermissionOptions={{
-                  title: 'Permission to use camera',
-                  message: 'We need your permission to use your camera',
-                  buttonPositive: 'Ok',
-                  buttonNegative: 'Cancel',
-                }}
-                onBarCodeRead={(barcodes) => {
-                  if(barcodes.data !== null && barcodes.data !== undefined){
-                      setCodigoChave(barcodes.data);
-                      setActiveCamera(false);
-                   }
-                  }
+          <>
+            <RNCamera
+              ref={camera => { cameraRef }}
+              captureAudio={false}
+              style={{width: '90%', height: '65%'}}
+              type={RNCamera.Constants.Type.back}
+              autoFocus={RNCamera.Constants.AutoFocus.on}
+              flashMode={RNCamera.Constants.FlashMode.off}
+              androidCameraPermissionOptions={{
+                title: 'Permission to use camera',
+                message: 'We need your permission to use your camera',
+                buttonPositive: 'Ok',
+                buttonNegative: 'Cancel',
+              }}
+              onBarCodeRead={(barcodes) => {
+                if(barcodes.data !== null && barcodes.data !== undefined){
+                    setCodigoChave(barcodes.data);
+                    setActiveCamera(false);
+                 }
                 }
-              />
+              }
+            />
+            <SubmitButton onPress={()=>setActiveCamera(false)}>
+              Voltar
+            </SubmitButton>
+          </>
         }
       </>
       </Container>

@@ -3,7 +3,7 @@ import { Image,ScrollView } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import Background from '../../components/Background';
 import { signUpRequest } from '../../store/modules/auth/actions';
-import logo from '../../assets/img/logo-pilao.png';
+import logo from '../../assets/img/logo-2btech.png';
 import { Container, Form, FormInput, SubmitButton,SignLink,SignLinkText,MaskInput } from './styles';
 
 export default function SignUp({ navigation }) {

@@ -2,7 +2,7 @@ import React, { useEffect,useState } from 'react';
 import { Image,ScrollView,SafeAreaView } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import Background from '../../../components/Background';
-import logo from '../../../assets/img/logo-sl-cafes.png';
+import logo from '../../../assets/img/logo-2btech.png';
 import Cards from '../../../components/Cards';
 import api from '../../../services/api';
 import { Container, Form, SubmitButton,Title,List } from './styles';

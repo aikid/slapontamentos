@@ -4,7 +4,7 @@ import { Image,ScrollView,Picker,Text,View,Alert } from 'react-native';
 import { AutocompleteDropdown } from 'react-native-autocomplete-dropdown';
 import { RNCamera } from 'react-native-camera';
 import Background from '../../../components/Background';
-import logo from '../../../assets/img/logo-sl-cafes.png';
+import logo from '../../../assets/img/logo-2btech.png';
 import { Container, Form, FormInput, SubmitButton,Intro,IconTouch } from './styles';
 import useLocation from '../../../hooks/useLocation';
 import api from '../../../services/api';
@@ -35,7 +35,8 @@ export default function CriarApontamento({ navigation }) {
    const [codigo, setCodigo] = useState('');
    const token = useSelector(state=> state.auth.token);
    api.defaults.headers.Authorization = `Bearer ${token}`;
-   const { coords, errorMsg } = useLocation();
+   const coords = navigation.getParam('coords');
+   console.log('Dados de cordenada: ', coords);
 
    useEffect(()=>{
     if(apontamento && apontamento.id) navigation.navigate("Apontamento",{apontamento: apontamento});
@@ -103,8 +104,8 @@ export default function CriarApontamento({ navigation }) {
             codigoDeposito,
             nomeDeposito,
             items,
-            latitude: coords.latitude,
-            longitude: coords.longitude 
+            latitude: coords?.latitude || 0,
+            longitude: coords?.longitude || 0 
         });
           console.log(response.data);
           console.log(response.data.Data);
@@ -144,7 +145,7 @@ export default function CriarApontamento({ navigation }) {
                 <Picker.Item label="Deposito" value="2" />
                 <Picker.Item label="Expedição" value="3" />
                 <Picker.Item label="Recebimento" value="4" />
-                <Picker.Item label="Outro" value="5" />
+                <Picker.Item label="Outro" value="10" />
               </Picker>
               <FormInput 
                 icon={'event'}
@@ -240,7 +241,7 @@ export default function CriarApontamento({ navigation }) {
                 </>
               }
 
-              {tipo == '5' &&
+              {tipo == '10' &&
                 <>
                   <FormInput
                     icon={'archive'} 
