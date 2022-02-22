@@ -13,40 +13,21 @@ export const Container = styled.KeyboardAvoidingView.attrs({
   padding: 0 30px;
 `;
 
-export const Form = styled.View`
+export const Content = styled.View`
     align-self: stretch;
-    margin-top:50px;
-`;
-
-export const FormInput = styled(Input)`
-    margin-bottom:10px;
+    margin-top:20px;
 `;
 
 export const SubmitButton = styled(Button)`
     margin-top:5px;
 `;
 
-export const SignLink = styled.TouchableOpacity`
-    margin-top:20px;
-`;
-
-export const SignLinkText = styled.Text`
+export const ContentText = styled.Text`
     color:#fff;
-    font-weight: bold;
     font-size: 16px;
-    text-align:center;
 `;
 
-export const Intro = styled.Text`
-    font-size: 18px;
-    color: #fff;
-    font-weight: 600;
-    text-align: center;
-    margin-top: 30px; 
-    margin-bottom: 30px;
-`;
-
-export const Title = styled.Text`
+export const ContentTitle = styled.Text`
     font-size: 20px;
     color: #fff;
     font-weight: bold;

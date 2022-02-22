@@ -2,7 +2,7 @@ import { Platform } from 'react-native';
 import styled from 'styled-components/native';
 import Input from '../../../components/Input';
 import Button from '../../../components/Button';
-import Icon from 'react-native-vector-icons/MaterialIcons'; 
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
 
 export const Container = styled.KeyboardAvoidingView.attrs({
@@ -33,7 +33,8 @@ export const SignLink = styled.TouchableOpacity`
     margin-top:20px;
 `;
 
-export const SignLinkText = styled.Text`
+export const DefaultText = styled.Text`
+    margin-top:25px;
     color:#fff;
     font-weight: bold;
     font-size: 16px;

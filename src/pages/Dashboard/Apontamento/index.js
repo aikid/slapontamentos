@@ -5,7 +5,8 @@ import Background from '../../../components/Background';
 import logo from '../../../assets/img/logo-2btech.png';
 import api from '../../../services/api';
 import Produtos from '../../../components/Produtos';
-import { Container, Form, SubmitButton,Intro, List,Title } from './styles';
+import { Container, Content, SubmitButton, List,ContentTitle,ContentText } from './styles';
+import {} from '../ApontamentoItem/styles';
 
 export default function Apontamento({ navigation }) {
   const apontamentoData = navigation.getParam('apontamento');
@@ -46,9 +47,9 @@ export default function Apontamento({ navigation }) {
     if(response.data.Items.length > 0){
       for (let i = 0; i < response.data.Items.length; i++){
         inventario_lista.push({
-          id: response.data.Items[i].Id, 
+          id: response.data.Items[i].Id,
           codigoProduto: response.data.Items[i].CodigoProduto,
-          numeroSelecao: response.data.Items[i].NumeroSelecao, 
+          numeroSelecao: response.data.Items[i].NumeroSelecao,
           nomeProduto: response.data.Items[i].NomeProduto,
           quantidade: response.data.Items[i].Quantidade,
         });
@@ -61,11 +62,11 @@ export default function Apontamento({ navigation }) {
     <Background>
       <Container>
         <Image source={logo}/>
-        <Form>
+        <Content>
           <ScrollView>
-            <Text>Tipo: {getTipo(apontamentoData.tipo)}</Text>
-            <Text>Data: {apontamentoData.data}</Text>
-            <Title>Itens Cadastrados</Title>
+            <ContentText>Tipo: {getTipo(apontamentoData.tipo)}</ContentText>
+            <ContentText>Data: {apontamentoData.data}</ContentText>
+            <ContentTitle>Itens Cadastrados</ContentTitle>
             <ScrollView style={{height: 300}}>
               <List
                 data={inventario}
@@ -74,13 +75,16 @@ export default function Apontamento({ navigation }) {
               />
             </ScrollView>
             <SubmitButton onPress={()=>navigation.navigate("ApontamentoItem",{apontamentoData:apontamentoData})}>
-              Adicionar Itens
+              Escanear Item
             </SubmitButton>
-            <SubmitButton onPress={()=>navigation.navigate("Apontamentos")}>
+            <SubmitButton onPress={()=>navigation.navigate("ApontamentoItem",{apontamentoData:apontamentoData})}>
+              Adicionar Item
+            </SubmitButton>
+            <SubmitButton onPress={() => navigation.navigate('Apontamentos')}>
               Voltar
             </SubmitButton>
           </ScrollView>
-        </Form>
+        </Content>
       </Container>
     </Background>
   );
